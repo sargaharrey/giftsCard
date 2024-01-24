@@ -82,42 +82,42 @@ app.get('/get-predefined-data', (req, res) => {
         colorCodes: predefinedColorCodes
     };
 
-    res.json(responseData);
+    res.status(200).json(responseData);
 });
 
 // Function to send card data and image via WhatsApp
-const sendWhatsAppMessage = async (cardData, imageUrl, userPhone) => {
-  try {
-    const message = await client.messages.create({
-      from: 'whatsapp:YOUR_TWILIO_WHATSAPP_NUMBER',
-      to: `whatsapp:${userPhone}`,
-      body: `Card: ${cardData.message}`, // Customize your message
-      mediaUrl: imageUrl,
-    });
+// const sendWhatsAppMessage = async (cardData, imageUrl, userPhone) => {
+//   try {
+//     const message = await client.messages.create({
+//       from: 'whatsapp:YOUR_TWILIO_WHATSAPP_NUMBER',
+//       to: `whatsapp:${userPhone}`,
+//       body: `Card: ${cardData.message}`, // Customize your message
+//       mediaUrl: imageUrl,
+//     });
 
-    return message.sid;
-  } catch (error) {
-    console.error('Error sending WhatsApp message:', error);
-    throw error;
-  }
-};
+//     return message.sid;
+//   } catch (error) {
+//     console.error('Error sending WhatsApp message:', error);
+//     throw error;
+//   }
+// };
 
-// Function to send card data via SMS
-const sendSMS = async (cardData, userPhone) => {
-  try {
-    const message = await client.messages.create({
-      from: 'YOUR_TWILIO_SMS_NUMBER',
-      to: userPhone,
-      body: `Card: ${cardData.message}`, // Customize your message
-      // No mediaUrl for SMS, as it's plain text
-    });
+// // Function to send card data via SMS
+// const sendSMS = async (cardData, userPhone) => {
+//   try {
+//     const message = await client.messages.create({
+//       from: 'YOUR_TWILIO_SMS_NUMBER',
+//       to: userPhone,
+//       body: `Card: ${cardData.message}`, // Customize your message
+//       // No mediaUrl for SMS, as it's plain text
+//     });
 
-    return message.sid;
-  } catch (error) {
-    console.error('Error sending SMS:', error);
-    throw error;
-  }
-};
+//     return message.sid;
+//   } catch (error) {
+//     console.error('Error sending SMS:', error);
+//     throw error;
+//   }
+// };
 
 // POST endpoint to send the card
 app.post('/send-card', async (req, res) => {
