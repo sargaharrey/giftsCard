@@ -2,11 +2,11 @@ const express = require('express');
 const app = express();
 const port = 3000;
 const stripe = require('stripe')('your_stripe_secret_key');
-const { Twilio } = require('twilio');
-// Twilio setup - replace with your Twilio credentials
-const accountSid = 'YOUR_TWILIO_ACCOUNT_SID';
-const authToken = 'YOUR_TWILIO_AUTH_TOKEN';
-const client = new Twilio(accountSid, authToken);
+// const { Twilio } = require('twilio');
+// // Twilio setup - replace with your Twilio credentials
+// const accountSid = 'YOUR_TWILIO_ACCOUNT_SID';
+// const authToken = 'YOUR_TWILIO_AUTH_TOKEN';
+// const client = new Twilio(accountSid, authToken);
 
 
 // Predefined data
